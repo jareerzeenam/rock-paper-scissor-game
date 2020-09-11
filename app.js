@@ -21,6 +21,7 @@ const game = () => {
     const computerHand = document.querySelector(".computer-hand");
     const hands = document.querySelectorAll(".hands img");
 
+    // ! Remove the Animation class once its used
     hands.forEach((hand) => {
       hand.addEventListener("animationend", function () {
         this.style.animation = "";
@@ -35,14 +36,15 @@ const game = () => {
         // ! Computer Choice
         const computerNumber = Math.floor(Math.random() * 3);
         const computerChoice = computerOptions[computerNumber];
+        // console.log(computerNumber);
         // console.log(computerChoice);
 
         setTimeout(() => {
           // ! Here is where we call compare hands
           compareHands(this.textContent, computerChoice);
           // ! Update Images
-          playerHand.src = `./assets/${this.textContent}.png`;
-          computerHand.src = `./assets/${computerChoice}.png`;
+          playerHand.src = `https://petinone.000webhostapp.com/assets/${this.textContent}.png`;
+          computerHand.src = `https://petinone.000webhostapp.com/assets/${computerChoice}.png`;
         }, 2000);
 
         //! Update the score after the Animation happens
@@ -50,8 +52,6 @@ const game = () => {
         computerHand.style.animation = "shakeComputer 2s ease";
       });
     });
-
-    // console.log(computerNumber);
   };
 
   // ! Update Score
@@ -69,7 +69,6 @@ const game = () => {
       window.location.reload();
     });
   };
-
   restartGame();
 
   //! End Game
@@ -78,7 +77,7 @@ const game = () => {
     const match = document.querySelector(".match");
     const winnerText = document.querySelector(".winnerText");
 
-    if (pScore === 1) {
+    if (pScore === 5) {
       match.classList.remove("fadeIn");
       match.classList.add("fadeOut");
       setTimeout(() => {
@@ -86,7 +85,7 @@ const game = () => {
         finalWinner.classList.remove("fadeOut");
         winnerText.textContent = "Player Won The Game";
       }, 2000);
-    } else if (cScore === 1) {
+    } else if (cScore === 5) {
       match.classList.remove("fadeIn");
       match.classList.add("fadeOut");
       setTimeout(() => {
@@ -163,5 +162,3 @@ const game = () => {
 };
 
 game();
-
-// ! Start the game function
