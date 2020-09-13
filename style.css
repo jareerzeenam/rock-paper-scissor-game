@@ -144,12 +144,12 @@ section .match button {
   cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .hands img {
     width: 50%;
   }
   section .match button {
-    width: 130px;
+    width: 100px;
     margin: 3px;
   }
   section .intro h1 {
